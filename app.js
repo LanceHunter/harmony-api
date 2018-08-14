@@ -89,8 +89,8 @@ discover.start()
 */
 
 
-harmony('192.168.1.96').then(function(client){
-  startProcessing(parameterize("Harmony Hub"), client)
+harmony(process.env.HUB_IP).then(function(client){
+  startProcessing(parameterize(process.env.HUB_NAME), client)
 })
 
 
@@ -572,6 +572,11 @@ app.get('/hubs_for_index', function(req, res){
 
   res.send(output)
 })
+
+console.log('process.env.PORT - ', process.env.PORT);
+console.log('process.env - ', process.env);
+console.log('***************************************');
+
 
 if (enableHTTPserver) {
     app.listen(process.env.PORT || 8282)
