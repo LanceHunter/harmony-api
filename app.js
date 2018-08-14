@@ -1,6 +1,6 @@
-var fs = require('fs')
-var path = require('path')
-var util = require('util')
+var fs = require('fs');
+var path = require('path');
+var util = require('util');
 var mqtt = require('mqtt');
 var express = require('express')
 var morgan = require('morgan')
@@ -52,15 +52,17 @@ var hasHarmonyHubClient = function(req, res, next) {
 }
 app.use(hasHarmonyHubClient)
 
-
-var discover = new harmonyHubDiscover(61991)
+/*
+var discover = new harmonyHubDiscover(61991, {
+  address: '192.168.1.96',
+});
 
 discover.on('online', function(hubInfo) {
   // Triggered when a new hub was found
   console.log('Hub discovered: ' + hubInfo.friendlyName + ' at ' + hubInfo.ip + '.')
 
   if (hubInfo.ip) {
-    harmony(hubInfo.ip).then(function(client){
+    harmony('192.168.1.96').then(function(client){
       startProcessing(parameterize(hubInfo.friendlyName), client)
     })
   }
@@ -83,6 +85,14 @@ discover.on('offline', function(hubInfo) {
 // Look for hubs:
 console.log('Starting discovery.')
 discover.start()
+******************************This is important for later!!!
+*/
+
+
+harmony('192.168.1.96').then(function(client){
+  startProcessing(parameterize("Harmony Hub"), client)
+})
+
 
 // mqtt api
 
