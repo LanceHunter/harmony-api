@@ -1,6 +1,6 @@
 # Harmony API!!
 
-This is an update on the
+This is an update on the [Harmony API by Jon Maddox](https://github.com/maddox/harmony-api) updated for use in a nonstandard enviornment.
 
 ## Setup
 
