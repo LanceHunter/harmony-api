@@ -4,6 +4,19 @@ set -e
 
 cd "$(dirname "$0")/.."
 
+echo $NODE_ENV
+
+echo "What is the Harmony Hub IP address?"
+
+read HUBIP
+
+echo "What is the Harmony Hub name?"
+
+read HUBNAME
+
+export HUB_IP=$HUBIP
+export HUB_NAME=$HUBNAME
+
 echo "Installing harmony-api..."
 
 APP_PATH=`pwd`

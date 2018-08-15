@@ -1,59 +1,19 @@
 # Harmony API!!
 
-Harmony API is a simple server allowing you to query/control multiple local [Harmony
-Home Hubs](http://myharmony.com/products/detail/home-hub/) and their devices
-over HTTP or MQTT.
-
-With HTTP, you can simply turn on and off activities, check hub status, and send
-commands to individual devices with simple HTTP requests from almost any other
-project.
-
-With MQTT, you can easily monitor the state of your devices as well as set
-the current activity of your hub or send specific commands per device. This
-makes it super easy to integrate into your existing home automation setup.
-
-
-## Features
-
-* Control multiple Harmony hubs.
-* List activities.
-* Get current status, including if everything is off, or what the current
-activity is.
-* Turn everything off.
-* Start a specific activity.
-* List devices.
-* List device commands.
-* Execute discrete commands for each device.
+This is an update on the
 
 ## Setup
 
+First, install [Forever](https://github.com/foreverjs/forever) using this command:
+    sudo npm install forever -g
+
+You can then complete the rest of the setup using this command:
     script/bootstrap
-
-## Settings
-
-Harmony API discovers your hubs automatically. You can optionally add your MQTT
-broker's host to connect to it.
-
-```json
-{
-  "mqtt_host": "mqtt://192.168.1.106",
-  "mqtt_options": {
-      "port": 1883,
-      "username": "someuser",
-      "password": "somepassword",
-      "rejectUnauthorized": false
-  },
-  "topic_namespace": "home/harmony"
-}
-```
-
-`mqtt_options` is optional, see the [mqtt](https://github.com/mqttjs/MQTT.js#connect) project for
-allowed host and options values.
 
 ## Running It
 Get up and running immediately with `script/server`.
 
-#### Note: 
+#### Note:
 On some distros, you might get an error when running it:
 `/usr/bin/node: No such file or directory`
 
@@ -63,50 +23,13 @@ That can probably be fixed by creating a symlink:
 Harmony API will run on port `8282` by default. Use the `PORT` environment
 variable to use your own port.
 
-### Forever
-harmony-api has support for [Forever](https://github.com/foreverjs/forever). It uses
-`launchd` on OS X to kick it off so that it starts on boot.
-
-### Development
-You can simply run it by calling `script/server`. This will run it in development
-mode with logging to standard out.
-
-### Install as Service on OS X
-
-    script/install
-
-### Install as systemd unit on Linux
-
-    sudo script/install-linux
-
-### Docker
-Installation with Docker is straightforward. Adjust the following command so that
-`/path/to/your/config` points to the folder where your want to store your config and run it:
-
-    $ docker run --name="harmony-api" -v /path/to/your/config:/config \
-        -p 8282:8282 -d jonmaddox/harmony-api
-
-This will launch Harmony API and serve the web interface from port 8282 on your Docker host. Hub
-discovery requires host networking (`--net=host`). However, you can specify your Harmony Hub IP
-address in `config.json` as `hub_ip`.
+To stop the server, run
+    script/uninstall
 
 ## Logging
 
 Harmony API logs all of its requests. In `production`, it logs to a file at `log/logs.log`.
 In `development` mode, it just logs to stdout.
-
-## How to Upgrade to 2.0
-
-Simply run `script/upgrade` from the root of the project and Harmony API will
-upgrade to the newest version.
-
-You are then going to have to change anything you integrate with Harmony API to
-reflect the change in HTTP endpoints and MQTT topics. Read the docs in this
-README to see how they have changed.
-
-## Development
-
-Launch the app via `script/server` to run it in the development environment.
 
 ## MQTT Docs
 
@@ -163,14 +86,14 @@ off.
 `harmony-api/hubs/family-room/activities/watch-tv/command` `on`  
 
 #### Device commands
-Just provide the slug of the hub and the device to control with the command you want to execute. 
+Just provide the slug of the hub and the device to control with the command you want to execute.
 `harmony-api/hubs/family-room/devices/tv/command` `volume-down`
 
 To optionally repeat the command any number of times, provide an optional repeat integer.
 `harmony-api/hubs/family-room/devices/tv/command` `volume-down:5`
 
 #### Current activity commands
-Just provide the slug of the hub and the command you want to execute. 
+Just provide the slug of the hub and the command you want to execute.
 `harmony-api/hubs/family-room/command` `volume-down`
 
 To optionally repeat the command any number of times, provide an optional repeat integer.
