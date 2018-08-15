@@ -3,18 +3,20 @@
 cd "$(dirname "$0")/.."
 
 test -z "$NODE_ENV" &&
-  export NODE_ENV='development'
+  export NODE_ENV='production'
+
+echo $NODE_ENV
 
 echo "What is the Harmony Hub IP address?"
 
-read hubIP
+read HUBIP
 
 echo "What is the Harmony Hub name?"
 
-read hubName
+read HUBNAME
 
-export HUB_IP=$hubIP
-export HUB_NAME=$hubName
+export HUB_IP=$HUBIP
+export HUB_NAME=$HUBNAME
 
 if [ "$NODE_ENV" = "development" ]; then
   /usr/bin/env forever -f config/forever/development.json
