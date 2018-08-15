@@ -5,10 +5,10 @@ This is an update on the [Harmony API by Jon Maddox](https://github.com/maddox/h
 ## Setup
 
 First, install [Forever](https://github.com/foreverjs/forever) using this command:
-    sudo npm install forever -g
+    `sudo npm install forever -g`
 
 You can then complete the rest of the setup using this command:
-    script/bootstrap
+    `script/bootstrap`
 
 ## Running It
 Get up and running immediately with `script/server`.
