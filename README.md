@@ -11,7 +11,8 @@ You can then complete the rest of the setup using this command:
     `script/bootstrap`
 
 ## Running It
-Get up and running immediately with `script/server`.
+
+Before you first run the software, you will need to know the IP address and name for your hub. Once you have these, run: `script/server` and enter the IP address and hub name when prompted.
 
 #### Note:
 On some distros, you might get an error when running it:
