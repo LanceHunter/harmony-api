@@ -53,6 +53,7 @@ var hasHarmonyHubClient = function(req, res, next) {
 app.use(hasHarmonyHubClient)
 
 /*
+****************************** Discover code, this was not working so IP had to be entered manually.
 var discover = new harmonyHubDiscover(61991, {
   address: '192.168.1.96',
 });
@@ -85,7 +86,7 @@ discover.on('offline', function(hubInfo) {
 // Look for hubs:
 console.log('Starting discovery.')
 discover.start()
-******************************This is important for later!!!
+****************************** End of discover code that was not working.
 */
 
 
